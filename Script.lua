@@ -53,4 +53,18 @@ local OptionSection = Option:NewSection("Keybinds")
 OptionSection:NewKeybind("ToggleUI", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
-end
+elseif game.PlaceId == 3956818381 then
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("NinjaLegends", "Sentinel")
+
+--MAIN
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewToggle("AutoSwing", "Make Your Player Autoswing", function(v)
+	getgenv().autoswing = v 
+	while true do
+	if not getgenv().autoswing then return end
+				
+	wait()
+end)
