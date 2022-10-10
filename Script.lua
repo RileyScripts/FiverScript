@@ -62,9 +62,13 @@ local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Main")
 
 MainSection:NewToggle("AutoSwing", "Make Your Player Autoswing", function(v)
-	getgenv().autoswing = v 
+	getgenv().autoswing = v
 	while true do
-	if not getgenv().autoswing then return end
-				
-	wait()
+		if not getgenv().autoswing then return end
+		local A_1 = "swingKatana"
+		local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+		Event:FireServer(A_1)
+		wait()
+	end
 end)
+
