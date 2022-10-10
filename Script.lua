@@ -1,6 +1,7 @@
-if game.PlaceId == 4483381587 then
+if game.PlaceId == 8628792096 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Fiver", "BloodTheme")
+
 
 
 --Main
@@ -27,10 +28,32 @@ MainSection:NewButton("Teleport to SafePlace", "Teleports You To The SafePlace",
     print("Clicked")
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1328, 4, 1217)
 end)
-local MainSection = Main:NewSection("Pinautomaat")
-MainSection:NewDropdown("GeldStorten", "DropdownInf", {"1K", "5K", "50K"}, function(currentOption)
-    print(currentOption)
+local MainSection = Main:NewSection("Pinnen")
+	MainSection:NewButton("Pinnen 100", "Pinnen", function()
+    print("Clicked")
+	local A_1 = "100"
+	local Event = game:GetService("ReplicatedStorage").Geldmaat.Storten
+	Event:FireServer(A_1)
 end)
+	MainSection:NewButton("Pinnen 1K", "Pinnen", function()
+    print("Clicked")
+	local A_1 = "1000"
+	local Event = game:GetService("ReplicatedStorage").Geldmaat.Storten
+	Event:FireServer(A_1)
+end)
+	MainSection:NewButton("Pinnen 5K", "Pinnen", function()
+    print("Clicked")
+	local A_1 = "5000"
+	local Event = game:GetService("ReplicatedStorage").Geldmaat.Storten
+	Event:FireServer(A_1)
+end)
+	MainSection:NewButton("Pinnen 10K", "Pinnen", function()
+    print("Clicked")
+		local A_1 = "10000"
+		local Event = game:GetService("ReplicatedStorage").Geldmaat.Storten
+		Event:FireServer(A_1)
+end)
+
 
 --Player
 local Player = Window:NewTab("Player")
@@ -53,22 +76,29 @@ local OptionSection = Option:NewSection("Keybinds")
 OptionSection:NewKeybind("ToggleUI", "KeybindInfo", Enum.KeyCode.F, function()
 	Library:ToggleUI()
 end)
-elseif game.PlaceId == 3956818381 then
+end
+if game.PlaceId == 189707 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("NinjaLegends", "Sentinel")
+local Window = Library.CreateLib("Natural Disaster", "BloodTheme")
 
---MAIN
 local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Main")
-
-MainSection:NewToggle("AutoSwing", "Make Your Player Autoswing", function(v)
-	getgenv().autoswing = v
-	while true do
-		if not getgenv().autoswing then return end
-		local A_1 = "swingKatana"
-		local Event = game:GetService("Players").LocalPlayer.ninjaEvent
-		Event:FireServer(A_1)
-		wait()
-	end
+local Main = Main:NewSection("Main")
+Main:NewButton("Remove FallDamage", "Removes FallDamage", function()
+    print("Clicked")
+	local falldamageScript = game:GetService("Players").LocalPlayer.Character:FindFirstChild("FallDamageScript")
+falldamageScript:remove()
 end)
 
+local Player = Window:NewTab("Player")
+ 	local Player = Player:NewSection("Player")
+	 Player:NewSlider("Walkspeed", "Changes Your Walkspeed", 500, 16, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+	 Player:NewSlider("JumpPower", "Changes Your JumpPower", 500, 50, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+end)
+
+
+	
+
+end
